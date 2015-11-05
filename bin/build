@@ -1,0 +1,9 @@
+#!/bin/bash
+set -ex
+cd "`dirname "$0"`/../src"
+
+[[ -z $IMAGE ]] && IMAGE="mauchede/aria2"
+[[ -z $TAG ]] && TAG="1.18.8"
+
+docker rmi $IMAGE:$TAG || :
+docker build -t $IMAGE:$TAG .
