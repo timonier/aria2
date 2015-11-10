@@ -2,32 +2,6 @@
 
 Dockerized [aria2](http://aria2.sourceforge.net/): High speed download utility.
 
-## Image
-
-### Installation
-
-Pull the image `mauchede/aria2`:
-
-```bash
-# Get the latest image
-docker pull mauchede/aria2
-
-# Or get a specific version
-
-# Get the version 1.18.8
-docker pull mauchede/aria2:1.18.8
-```
-
-### Usage
-
-Run your container via `docker run`. The [aria2c options](http://aria2.sourceforge.net/manual/en/html/aria2c.html) can be passed as arguments. For example:
-
-```bash
-docker run --name aria2 -v /data:/data mauchede/aria2 --dir=/data --enable-rpc --rpc-listen-all=true
-```
-
-## Command-line interface
-
 ## Installation
 
 Copy the script `bin/aria2c` into your executable folder (like `/usr/local/bin` or `$HOME/bin`).

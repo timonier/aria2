@@ -1,13 +1,12 @@
-FROM debian:jessie
+FROM alpine:3.1
 MAINTAINER Morgan Auchede <morgan.auchede@gmail.com>
 
 ENV \
-    DEBIAN_FRONTEND=noninteractive \
-    ARIA2_VERSION=1.18.8
+    ARIA2_VERSION=1.18.8-r0 \
+    CA_CERTIFICATES_VERSION=20141019-r0
 
 RUN set -x \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends aria2=$ARIA2_VERSION* ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+    && apk add -U aria2=$ARIA2_VERSION ca-certificates=$CA_CERTIFICATES_VERSION \
+    && rm -rf /var/cache/apk/*
 
 ENTRYPOINT [ "/usr/bin/aria2c" ]
