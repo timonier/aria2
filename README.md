@@ -1,8 +1,4 @@
-# aria2
-
-Dockerized [aria2](http://aria2.sourceforge.net/): High speed download utility.
-
-## Installation
+### Installation
 
 Copy the script `bin/aria2c` into your executable folder (like `/usr/local/bin` or `$HOME/bin`).
 
@@ -11,7 +7,7 @@ sudo curl -sLo /usr/local/bin/aria2c https://github.com/mauchede/aria2/raw/maste
 sudo chmod +x /usr/local/bin/aria2c
 ```
 
-## Usage
+### Usage
 
 Run the script `aria2c`:
 
@@ -25,7 +21,7 @@ __Note__: By default, the version `1.18.8` will be used. To change the version, 
 TAG="latest" ariac -v
 ```
 
-## Contributing
+### Contributing
 
 1. Fork it.
 2. Create your branch: `git checkout -b my-new-feature`.
@@ -33,7 +29,7 @@ TAG="latest" ariac -v
 4. Push to the branch: `git push origin my-new-feature`.
 5. Submit a pull request.
 
-## Links
+### Links
 
 * [aria2c options](http://aria2.sourceforge.net/manual/en/html/aria2c.html)
 * [command "docker run"](https://docs.docker.com/reference/run/)
