@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-[[ -z $IMAGE ]] && IMAGE="mauchede/aria2"
+[[ -z $IMAGE ]] && IMAGE="timonier/aria2"
 [[ -z $TAG ]] && TAG="1.18.8"
 
 docker run \
