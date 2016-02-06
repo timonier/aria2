@@ -1,4 +1,4 @@
-### Installation
+# Installation
 
 Pull the image `timonier/aria2`:
 
@@ -12,7 +12,7 @@ docker pull timonier/aria2
 docker pull timonier/aria2:1.18.8
 ```
 
-### Usage
+# Usage
 
 Run your container via `docker run`. The [aria2 options](http://aria2.sourceforge.net/manual/en/html/aria2c.html) can be passed as arguments:
 
@@ -20,7 +20,7 @@ Run your container via `docker run`. The [aria2 options](http://aria2.sourceforg
 docker run -it --net=host -v /data:/data timonier/aria2 --dir=/data --enable-rpc --rpc-listen-all=true
 ```
 
-### Contributing
+# Contributing
 
 1. Fork it.
 2. Create your branch: `git checkout -b my-new-feature`.
@@ -28,7 +28,7 @@ docker run -it --net=host -v /data:/data timonier/aria2 --dir=/data --enable-rpc
 4. Push to the branch: `git push origin my-new-feature`.
 5. Submit a pull request.
 
-### Links
+# Links
 
 * [aria2](http://aria2.sourceforge.net/)
 * [aria2c options](http://aria2.sourceforge.net/manual/en/html/aria2c.html)
