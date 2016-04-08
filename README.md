@@ -23,7 +23,7 @@ docker run \
     -i \
     -t \
     -v /data:/data \
-    --net=host \
+    --net host \
     timonier/aria2:1.18.8 --dir=/data --enable-rpc --rpc-listen-all=true
 ```
 
@@ -34,6 +34,8 @@ docker run \
 3. Commit your changes: `git commit -am 'Add some feature'`.
 4. Push to the branch: `git push origin my-new-feature`.
 5. Submit a pull request.
+
+__Note__: Use the script `bin/build` to test your modifications locally.
 
 ## Links
 
