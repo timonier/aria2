@@ -1,4 +1,4 @@
 #!/bin/sh
 cd "`dirname "$0"`/../src"
 
-docker build -t ${IMAGE:-timonier/aria2}:${TAG:-1.18.8} .
+docker build -t ${IMAGE:-timonier/aria2}:${TAG:-1.18.10} .

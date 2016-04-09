@@ -5,7 +5,7 @@
 Pull the image `timonier/aria2`:
 
 ```sh
-# Get the latest image
+# Get the latest image (version 1.18.10)
 docker pull timonier/aria2
 
 # Or get a specific version
@@ -16,7 +16,7 @@ docker pull timonier/aria2:1.18.8
 
 ## Usage
 
-Run your container via `docker run`. The [aria2 options](http://aria2.sourceforge.net/manual/en/html/aria2c.html) can be passed as arguments:
+Run the application via `docker run`. The [aria2 options](http://aria2.sourceforge.net/manual/en/html/aria2c.html) can be passed as arguments:
 
 ```sh
 docker run \
@@ -24,7 +24,7 @@ docker run \
     -t \
     -v /data:/data \
     --net host \
-    timonier/aria2:1.18.8 --dir=/data --enable-rpc --rpc-listen-all=true
+    timonier/aria2 --dir=/data --enable-rpc --rpc-listen-all=true
 ```
 
 ## Contributing
