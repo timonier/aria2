@@ -1,30 +1,34 @@
 # README
 
+High speed download utility
+
 ## Installation
 
-Pull the image `timonier/aria2`:
+Copy `bin/aria2c` into your executable folder (like `/usr/local/bin` or `$HOME/bin`):
 
 ```sh
-# Get the latest image (version 1.18.10)
-docker pull timonier/aria2
+sudo curl --location --output /usr/local/bin/aria2c "https://github.com/timonier/soffice/raw/master/bin/aria2c"
+sudo chmod +x /usr/local/bin/aria2c
+```
 
-# Or get a specific version
+Linux users can use the [installer](https://github.com/timonier/aria2c/blob/master/bin/installer):
 
-# Get the version 1.18.8
-docker pull timonier/aria2:1.18.8
+```sh
+curl --location "https://github.com/timonier/aria2c/raw/master/bin/installer" | sudo sh -s install
 ```
 
 ## Usage
 
-Run the application via `docker run`. The [aria2 options](http://aria2.sourceforge.net/manual/en/html/aria2c.html) can be passed as arguments:
+Run the command `aria2c`:
 
 ```sh
-docker run \
-    -i \
-    -t \
-    -v /data:/data \
-    --net host \
-    timonier/aria2 --dir=/data --enable-rpc --rpc-listen-all=true
+# See all aria2c options
+
+aria2c --help
+
+# Run aria2c
+
+aria2c --dir /data --enable-rpc --rpc-listen-all
 ```
 
 ## Contributing
@@ -39,8 +43,7 @@ __Note__: Use the script `bin/build` to test your modifications locally.
 
 ## Links
 
-* [aria2](http://aria2.sourceforge.net/)
-* [aria2c options](http://aria2.sourceforge.net/manual/en/html/aria2c.html)
-* [command "docker pull"](https://docs.docker.com/reference/commandline/pull/)
-* [command "docker run"](https://docs.docker.com/reference/run/)
+* [aria2/aria2](https://github.com/aria2/aria2)
 * [image "timonier/aria2"](https://hub.docker.com/r/timonier/aria2/)
+* [timonier/dumb-entrypoint](https://github.com/timonier/dumb-entrypoint)
+* [timonier/version-lister](https://github.com/timonier/version-lister)

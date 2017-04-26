@@ -1,28 +1,42 @@
-FROM alpine:3.2
-MAINTAINER Morgan Auchede <morgan.auchede@gmail.com>
+FROM alpine:latest
+
+LABEL \
+    maintainer="Morgan Auchede <morgan.auchede@gmail.com>"
 
 ENV \
-    ARIA2_VERSION=1.18.10
+    ARIA2_VERSION=latest
 
-RUN set -x \
-
-    # Prepare system
-
-    && resolve() { echo $(apk search $1 | grep "^$1-$2" | sed -e "s/$1-//g") ; } \
-
-    && apk add -U \
+RUN set -eux \
 
     # Install packages
 
-    && RESOLVED_ARIA2_VERSION=$(resolve aria2 $ARIA2_VERSION) \
+    && apk add --no-cache --no-progress --virtual BUILD_DEPS \
+           build-base \
+           curl \
 
-    && apk add \
-           aria2=${RESOLVED_ARIA2_VERSION:?"Impossible to find 'aria2' in version '$ARIA2_VERSION'"} \
+    && apk add --no-cache --no-progress \
            ca-certificates \
+           libstdc++ \
+
+    # Install aria2
+
+    && export $(curl "https://raw.githubusercontent.com/timonier/version-lister/release/generated/aria2/${ARIA2_VERSION}" | xargs) \
+
+    && curl --location "https://github.com/aria2/aria2/releases/download/release-${ARIA2_VERSION}/aria2-${ARIA2_VERSION}.tar.gz" | tar --directory /tmp --extract --gzip \
+    && sh -c "cd '/tmp/aria2-${ARIA2_VERSION}' && ./configure --localstatedir=/var --prefix=/usr --sysconfdir=/etc --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt" \
+    && make --directory "/tmp/aria2-${ARIA2_VERSION}" \
+    && make --directory "/tmp/aria2-${ARIA2_VERSION}" install \
+
+    # Install dumb-entrypoint
+
+    && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/bin/installer" | INSTALL_DIRECTORY="/usr/sbin" sh -s install \
 
     # Clean
 
-    && rm -rf \
-           /var/cache/apk/*
+    && apk del --no-progress \
+           BUILD_DEPS \
 
-ENTRYPOINT [ "/usr/bin/aria2c" ]
+    && rm -f -r \
+           /tmp/*
+
+ENTRYPOINT [ "dumb-init" , "--" , "dumb-entrypoint" ]

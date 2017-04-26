@@ -1,0 +1,38 @@
+#!/bin/sh
+set -eux
+
+# Check environment
+
+fail() {
+    echo "$1" 1>&2
+    echo "Usage: $(basename "$0") [install|uninstall]" 1>&2
+    exit 1
+}
+
+if [ "$#" -lt 1 ] ; then
+    fail "Invalid number of arguments."
+fi
+
+if [ "$(id --user)" -ne 0 ] ; then
+    fail "Impossible to prepare the system without root privileges."
+fi
+
+if [ "$(uname)" != "Linux" ] ; then
+    fail "Impossible to prepare another operating system than Linux."
+fi
+
+# Run installer
+
+case $1 in
+    install )
+        curl --location --output /usr/local/bin/aria2c "https://github.com/timonier/aria2/raw/master/bin/aria2c"
+        chmod +x /usr/local/bin/aria2c
+    ;;
+
+    uninstall )
+        rm --force /usr/local/bin/aria2c
+    ;;
+
+    * )
+        fail "Argument \"$1\" is invalid."
+esac
