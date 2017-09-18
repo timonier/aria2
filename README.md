@@ -14,7 +14,7 @@ sudo chmod +x /usr/local/bin/aria2c
 Linux users can use the [installer](https://github.com/timonier/aria2c/blob/master/bin/installer):
 
 ```sh
-curl --location "https://github.com/timonier/aria2c/raw/master/bin/installer" | sudo sh -s install
+curl --location "https://github.com/timonier/aria2/raw/master/bin/installer" | sudo sh -s -- install
 ```
 
 ## Usage

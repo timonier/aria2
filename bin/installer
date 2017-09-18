@@ -1,11 +1,11 @@
 #!/bin/sh
-set -eux
+set -ex
 
 # Check environment
 
 fail() {
-    echo "$1" 1>&2
-    echo "Usage: $(basename "$0") [install|uninstall]" 1>&2
+    echo 1>&2 "$1"
+    echo 1>&2 "Usage: $(basename "$0") [install|uninstall]"
     exit 1
 }
 
@@ -23,7 +23,7 @@ fi
 
 # Run installer
 
-case $1 in
+case "$1" in
     install )
         curl --location --output /usr/local/bin/aria2c "https://github.com/timonier/aria2/raw/master/bin/aria2c"
         chmod +x /usr/local/bin/aria2c
