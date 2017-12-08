@@ -7,7 +7,7 @@ High speed download utility
 Copy `bin/aria2c` into your executable folder (like `/usr/local/bin` or `$HOME/bin`):
 
 ```sh
-sudo curl --location --output /usr/local/bin/aria2c "https://github.com/timonier/soffice/raw/master/bin/aria2c"
+sudo curl --location --output /usr/local/bin/aria2c "https://github.com/timonier/aria2/raw/master/bin/aria2c"
 sudo chmod +x /usr/local/bin/aria2c
 ```
 
