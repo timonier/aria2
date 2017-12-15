@@ -20,4 +20,4 @@ docker run \
     --volume "${HOME}:${HOME}" \
     --volume "${PWD}:${PWD}" \
     --workdir "${PWD}" \
-    "${IMAGE:-timonier/aria2}:${TAG:-latest}" aria2c "$@"
+    "${IMAGE:-timonier/aria2}:${TAG:-latest}" "$(basename "$0")" "$@"

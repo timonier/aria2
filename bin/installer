@@ -25,7 +25,7 @@ fi
 
 case "$1" in
     install )
-        curl --location --output /usr/local/bin/aria2c "https://github.com/timonier/aria2/raw/master/bin/aria2c"
+        curl --location --output /usr/local/bin/aria2c "https://github.com/timonier/aria2/raw/master/bin/cmd"
         chmod +x /usr/local/bin/aria2c
     ;;
 
