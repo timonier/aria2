@@ -34,6 +34,8 @@ aria2c --dir /data --enable-rpc --rpc-listen-all
 
 __Note__: Use the script `bin/build` to test your modifications locally.
 
+If you like / use this project, please let me known by adding a [★](https://help.github.com/articles/about-stars/) on the [GitHub repository](https://github.com/timonier/aria2).
+
 ## Links
 
 * [aria2/aria2](https://github.com/aria2/aria2)
