@@ -4,8 +4,6 @@ High speed download utility
 
 ## Installation
 
-Linux users can use the [installer](https://github.com/timonier/aria2c/blob/master/bin/installer):
-
 ```sh
 # Define installation folder
 
