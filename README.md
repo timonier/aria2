@@ -18,7 +18,9 @@ sudo bin/installer install
 curl --location "https://github.com/timonier/aria2/raw/master/bin/installer" | sudo sh -s -- install
 ```
 
-__Note__: If you do not define `INSTALL_DIRECTORY`, `installer` will use in `/usr/local/bin`.
+__Note 1__: If you do not define `INSTALL_DIRECTORY`, `installer` will use in `/usr/local/bin`.
+
+__Note 2__: `docker-for-mac` users have to configure [native NFS server](https://medium.com/@sean.handley/how-to-set-up-docker-for-mac-with-native-nfs-145151458adc).
 
 ## Usage
 
@@ -50,5 +52,6 @@ If you like / use this project, please let me known by adding a [★](https://he
 
 * [aria2/aria2](https://github.com/aria2/aria2)
 * [image "timonier/aria2"](https://hub.docker.com/r/timonier/aria2/)
+* [set up docker for mac with native nfs](https://medium.com/@sean.handley/how-to-set-up-docker-for-mac-with-native-nfs-145151458adc)
 * [timonier/dumb-entrypoint](https://github.com/timonier/dumb-entrypoint)
 * [timonier/version-lister](https://github.com/timonier/version-lister)
