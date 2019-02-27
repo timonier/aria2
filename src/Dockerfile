@@ -8,7 +8,7 @@ RUN set -e -u -x \
     # Install packages
 \
     && apk add --no-cache --no-progress --virtual BUILD_DEPS build-base c-ares-dev curl expat-dev gnutls-dev sqlite-dev \
-    && apk add --no-cache --no-progress c-ares ca-certificates expat libstdc++ sqlite-libs gnutls \
+    && apk add --no-cache --no-progress bash c-ares ca-certificates expat libstdc++ sqlite-libs gnutls \
 \
     # Install aria2
 \
