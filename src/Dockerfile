@@ -14,14 +14,14 @@ RUN set -e -u -x \
 \
     && export $(curl --location "https://github.com/timonier/version-lister/raw/generated/aria2/aria2/latest" | xargs) \
     && curl --location "${ARIA2_RELEASE}" | tar --directory /tmp --extract --gzip \
-    && sh -c "cd '/tmp/aria2-${ARIA2_VERSION}' && ./configure --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt" \
+    && ( cd "/tmp/aria2-${ARIA2_VERSION}" && ./configure --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt ) \
     && make --directory /tmp/aria2-"${ARIA2_VERSION}" \
     && make --directory /tmp/aria2-"${ARIA2_VERSION}" install \
 \
     # Install dumb-entrypoint
 \
-    && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/src/dumb-entrypoint/installer" | sh -s -- install \
-    && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/src/gosu/installer" | sh -s -- install \
+    && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/src/dumb-entrypoint/installer" | bash -s -- install \
+    && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/src/gosu/installer" | bash -s -- install \
 \
     # Clean
 \
