@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 LABEL \
-    maintainer="Morgan Auchede <morgan.auchede@gmail.com>"
+    maintainer="Morgan AUCHEDE <morgan.auchede@gmail.com>"
 
 RUN set -e -u -x \
 \
@@ -12,7 +12,7 @@ RUN set -e -u -x \
 \
     # Install aria2
 \
-    && export $(curl --location "https://github.com/timonier/version-lister/raw/generated/aria2/aria2/latest" | xargs) \
+    && export $(curl --location "https://gitlab.com/timonier/version-lister/raw/generated/aria2/aria2/latest" | xargs) \
     && curl --location "${ARIA2_RELEASE}" | tar --directory /tmp --extract --gzip \
     && ( cd "/tmp/aria2-${ARIA2_VERSION}" && ./configure --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt ) \
     && make --directory /tmp/aria2-"${ARIA2_VERSION}" \
@@ -20,8 +20,8 @@ RUN set -e -u -x \
 \
     # Install dumb-entrypoint
 \
-    && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/src/dumb-entrypoint/installer" | bash -s -- install \
-    && curl --location "https://github.com/timonier/dumb-entrypoint/raw/master/src/gosu/installer" | bash -s -- install \
+    && curl --location "https://gitlab.com/timonier/dumb-entrypoint/raw/master/src/dumb-entrypoint/installer" | bash -s -- install \
+    && curl --location "https://gitlab.com/timonier/dumb-entrypoint/raw/master/src/gosu/installer" | bash -s -- install \
 \
     # Clean
 \
