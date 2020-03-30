@@ -1,17 +1,42 @@
 stages:
-    - build
-    - deploy
+    - check:build
+    - deploy:build
 
 # ---
 
-deploy:image:
+check:build:image:aria2:
     before_script:
-        - 'apk add --no-cache --no-progress ca-certificates curl'
+        - 'export DOCKER_HOST=tcp://docker:2375'
+    except:
+        - master
     image:
         entrypoint: ['']
-        name: alpine:latest
+        name: docker:stable
+    retry:
+        max: 2
+    script:
+        - 'docker build --pull --tag "${CI_REGISTRY_IMAGE}":"${CI_COMMIT_REF_SLUG}" src'
+    services:
+        - docker:stable-dind
+    stage: check:build
+
+deploy:build:image:aria2:
+    before_script:
+        - 'export DOCKER_HOST=tcp://docker:2375'
+        - 'docker login --password "${CI_REGISTRY_PASSWORD}" --username "${CI_REGISTRY_USER}" registry.gitlab.com'
+        - 'docker login --password "${HUB_REGISTRY_PASSWORD}" --username "${HUB_REGISTRY_USER}"'
+    image:
+        entrypoint: ['']
+        name: docker:stable
     only:
         - master
+    retry:
+        max: 2
     script:
-        - 'curl --request POST "https://cloud.docker.com/api/build/v1/source/aa655ed6-76eb-4e8a-87e7-b924c4663f42/trigger/${DOCKER_CLOUD_TOKEN}/call/"'
-    stage: deploy
+        - 'docker build --pull --tag "${CI_REGISTRY_IMAGE}":latest src'
+        - 'docker push "${CI_REGISTRY_IMAGE}":latest'
+        - 'docker tag "${CI_REGISTRY_IMAGE}":latest "${HUB_REGISTRY_IMAGE}":latest'
+        - 'docker push "${HUB_REGISTRY_IMAGE}":latest'
+    services:
+        - docker:stable-dind
+    stage: deploy:build

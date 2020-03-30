@@ -18,14 +18,7 @@ RUN set -e -u -x \
     && make --directory /tmp/aria2-"${ARIA2_VERSION}" \
     && make --directory /tmp/aria2-"${ARIA2_VERSION}" install \
 \
-    # Install dumb-entrypoint
-\
-    && curl --location "https://gitlab.com/timonier/dumb-entrypoint/raw/master/src/dumb-entrypoint/installer" | bash -s -- install \
-    && curl --location "https://gitlab.com/timonier/dumb-entrypoint/raw/master/src/gosu/installer" | bash -s -- install \
-\
     # Clean
 \
     && apk del --no-progress BUILD_DEPS \
     && rm -f -r /tmp/*
-
-ENTRYPOINT [ "dumb-entrypoint" ]
