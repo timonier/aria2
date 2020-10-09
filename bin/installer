@@ -24,7 +24,7 @@ case "$1" in
         if [ -t 0 ]; then
             cp cmd "${INSTALL_DIRECTORY}"/aria2c
         else
-            curl --location --output "${INSTALL_DIRECTORY}"/aria2c "https://gitlab.com/timonier/aria2/raw/master/bin/cmd"
+            curl --location --output "${INSTALL_DIRECTORY}"/aria2c "https://github.com/timonier/aria2/raw/master/bin/cmd"
         fi
         chmod +x "${INSTALL_DIRECTORY}"/aria2c
         ;;
